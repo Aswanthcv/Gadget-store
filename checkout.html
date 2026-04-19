@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Gadget Hub Logo">
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><a href="checkout.html" class="active-link">Checkout</a></li>
+    </ul>
+  </nav>
+
+  <h2 class="section-title">Checkout</h2>
+
+  <div class="checkout-container">
+
+    <!-- Order Summary -->
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <ul id="checkout-items"></ul>
+      <h3>Total: ₹<span id="checkout-total">0</span></h3>
+    </div>
+
+    <!-- Form -->
+  <div class="checkout-form">
+    <h3>Delivery Details</h3>
+
+    <input type="text" id="name" placeholder="Full Name" required>
+
+    <textarea id="address" placeholder="Address" required></textarea>
+
+    <input type="tel" id="phone" placeholder="Phone Number" required>
+
+    <input type="text" id="pincode" placeholder="PIN Code" maxlength="6" required>
+
+    <button onclick="placeOrder()">Place Order</button>
+  </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+
+      <h3>Gadget Store</h3>
+      <p>Your trusted place for latest tech products.</p>
+      <p class="contact"> <i class="fas fa-phone"></i>+91 98765 43210</p>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Gadget Store. All rights reserved.</p>
+    </div>
+  </footer>  
+
+
+  <script src="checkout.js"></script>
+</body>
+</html>

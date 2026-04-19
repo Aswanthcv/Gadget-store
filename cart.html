@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Gadget Hub Logo">
+    </a>
+    <ul>
+      <li> <a href="index.html">Home</a></li>
+      <li><a href="cart.html" class="active-link"><i class="fa-solid fa-bag-shopping"></i> Cart</a></li>
+    </ul>
+  </nav>
+
+  <h2 class="section-title">Your Cart</h2>
+
+  <div class="cart-page">
+    <ul id="cart-items"></ul>
+    <h3>Total: ₹<span id="total">0</span></h3>
+
+    <div class="checkout-btn-container" id="checkout-container">
+      <a href="checkout.html" class="checkout-btn">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <h3>Gadget Store</h3>
+      <p>Your trusted place for latest tech products.</p>
+      <p class="contact"> <i class="fas fa-phone"></i> +91 98765 43210</p>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Gadget Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="cart.js"></script>
+</body>
+</html>
