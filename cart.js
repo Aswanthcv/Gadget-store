@@ -3,7 +3,7 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let cartItems = document.getElementById("cart-items");
 let total = document.getElementById("total");
 
-let checkoutContainer = document.getElementById("checkout-container");
+let checkoutContainer = document.getElementById("checkout-container");  //checkout btn container
 
 // Render cart items
 function renderCart() {
@@ -77,7 +77,7 @@ function decreaseQty(index) {
 
 // Update cart count (optional here)
 function updateCartCount() {
-  let count = cart.reduce((total, item) => total + item.quantity, 0);
+  let count = cart.reduce((total, item) => total + item.quantity, 0); //total quantity into single value
 
   let countEl = document.getElementById("cart-count");
   if (countEl) {

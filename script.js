@@ -38,7 +38,7 @@ let products = [
   {
     name: "JBL Soundbar",
     price: 6000,
-    image: "images/samsung.png"
+    image: "images/jbl.png"
   },
 ];
 
@@ -63,7 +63,7 @@ products.forEach((p) => {
 
 // Add to cart (with quantity system)
 function addToCart(name, price, image) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cart = JSON.parse(localStorage.getItem("cart")) || []; //checks empty
 
   let existing = cart.find(item => item.name === name);
 

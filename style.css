@@ -144,7 +144,7 @@ nav ul li a:hover::after {
 }
 .scroll-down {
   position: absolute;
-  bottom: 30px;
+  bottom: 35px;
   font-size: 24px;
   color: white;
   animation: bounce 1.5s infinite;
