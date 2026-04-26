@@ -13,8 +13,18 @@
       <img src="images/logo.png" alt="Gadget Hub Logo">
     </a>
     <ul>
-      <li> <a href="index.html">Home</a></li>
-      <li><a href="cart.html" class="active-link"><i class="fa-solid fa-bag-shopping"></i> Cart</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#product-list">Products</a></li>
+      <li>
+        <a href="cart.html" class="active-link">
+          <i class="fa-solid fa-bag-shopping"></i>
+          (<span id="cart-count">0</span>)
+        </a>
+      </li>
+      <li class="auth-link-item">
+        <a href="login.html"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Signup</a>
+      </li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
     </ul>
   </nav>
 

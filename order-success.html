@@ -8,6 +8,26 @@
 </head>
 <body>
 
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Gadget Hub Logo">
+    </a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#product-list">Products</a></li>
+      <li>
+        <a href="cart.html">
+          <i class="fa-solid fa-bag-shopping"></i>
+          (<span id="cart-count">0</span>)
+        </a>
+      </li>
+      <li class="auth-link-item">
+        <a href="login.html"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Signup</a>
+      </li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
+    </ul>
+  </nav>
+
   <div class="success-container">
     <div class="success-box">
       
@@ -40,6 +60,46 @@
       <p>© 2026 Gadget Store. All rights reserved.</p>
     </div>
   </footer>  
+
+  <script>
+    let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let count = cart.reduce((sum, item) => sum + item.quantity, 0);
+    let countEl = document.getElementById("cart-count");
+
+    if (countEl) {
+      countEl.innerText = count;
+    }
+
+    let navLinks = document.querySelectorAll("nav ul li a");
+    let loginLink = null;
+    let logoutLink = null;
+
+    navLinks.forEach(link => {
+      if (link.textContent.trim() === "Login / Signup") {
+        loginLink = link;
+      }
+
+      if (link.textContent.trim() === "Logout") {
+        logoutLink = link;
+      }
+    });
+
+    if (loginLink) {
+      loginLink.style.display = isLoggedIn ? "none" : "inline-block";
+    }
+
+    if (logoutLink) {
+      logoutLink.style.display = isLoggedIn ? "inline-block" : "none";
+    }
+
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("cart");
+      window.location.href = "login.html";
+    }
+  </script>
 
 </body>
 </html>

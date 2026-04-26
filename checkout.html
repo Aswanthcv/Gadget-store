@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Checkout</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -14,8 +15,18 @@
     </a>
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="cart.html">Cart</a></li>
+      <li><a href="index.html#product-list">Products</a></li>
+      <li>
+        <a href="cart.html">
+          <i class="fa-solid fa-bag-shopping"></i>
+          (<span id="cart-count">0</span>)
+        </a>
+      </li>
       <li><a href="checkout.html" class="active-link">Checkout</a></li>
+      <li class="auth-link-item">
+        <a href="login.html"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Signup</a>
+      </li>
+      <li><a href="#" onclick="logout()">Logout</a></li>
     </ul>
   </nav>
 

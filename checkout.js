@@ -2,6 +2,7 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let container = document.getElementById("checkout-items");
 let totalEl = document.getElementById("checkout-total");
+let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
 let total = 0;
 
@@ -26,6 +27,11 @@ if (cart.length === 0) {
 
 // 🔹 Place order with validation
 function placeOrder() {
+  if (!isLoggedIn) {
+    window.location.href = "login.html?redirect=checkout.html";
+    return;
+  }
+
   let name = document.getElementById("name").value.trim();
   let address = document.getElementById("address").value.trim();
   let phone = document.getElementById("phone").value.trim();
@@ -74,3 +80,47 @@ function placeOrder() {
   // 🔹 Redirect
   window.location.href = "order-success.html";
 }
+
+function updateCartCount() {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  let countEl = document.getElementById("cart-count");
+
+  if (countEl) {
+    countEl.innerText = count;
+  }
+}
+
+function logout() {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("cart");
+  window.location.href = "login.html";
+}
+
+function toggleAuthLinks() {
+  let navLinks = document.querySelectorAll("nav ul li a");
+  let loginLink = null;
+  let logoutLink = null;
+
+  navLinks.forEach(link => {
+    if (link.textContent.trim() === "Login / Signup") {
+      loginLink = link;
+    }
+
+    if (link.textContent.trim() === "Logout") {
+      logoutLink = link;
+    }
+  });
+
+  if (loginLink) {
+    loginLink.style.display = isLoggedIn ? "none" : "inline-block";
+  }
+
+  if (logoutLink) {
+    logoutLink.style.display = isLoggedIn ? "inline-block" : "none";
+  }
+}
+
+updateCartCount();
+toggleAuthLinks();

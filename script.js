@@ -1,12 +1,6 @@
-// Checks loggined or not
-let isLoggedIn = localStorage.getItem("isLoggedIn");
-
-if (!isLoggedIn) {
-  window.location.href = "login.html";
-}
-
 // Load cart from localStorage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
 // Product data
 let products = [
@@ -91,8 +85,35 @@ function updateCartCount() {
 
 function logout() {
   localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("cart");
   window.location.href = "login.html";
+}
+
+function toggleAuthLinks() {
+  let navLinks = document.querySelectorAll("nav ul li a");
+  let loginLink = null;
+  let logoutLink = null;
+
+  navLinks.forEach(link => {
+    if (link.textContent.trim() === "Login / Signup") {
+      loginLink = link;
+    }
+
+    if (link.textContent.trim() === "Logout") {
+      logoutLink = link;
+    }
+  });
+
+  if (loginLink) {
+    loginLink.style.display = isLoggedIn ? "none" : "inline-block";
+  }
+
+  if (logoutLink) {
+    logoutLink.style.display = isLoggedIn ? "inline-block" : "none";
+  }
 }
 
 // Run on load
 updateCartCount();
+toggleAuthLinks();

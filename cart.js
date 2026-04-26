@@ -4,6 +4,7 @@ let cartItems = document.getElementById("cart-items");
 let total = document.getElementById("total");
 
 let checkoutContainer = document.getElementById("checkout-container");  //checkout btn container
+let isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
 // Render cart items
 function renderCart() {
@@ -85,5 +86,37 @@ function updateCartCount() {
   }
 }
 
+function logout() {
+  localStorage.removeItem("isLoggedIn");
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("cart");
+  window.location.href = "login.html";
+}
+
+function toggleAuthLinks() {
+  let navLinks = document.querySelectorAll("nav ul li a");
+  let loginLink = null;
+  let logoutLink = null;
+
+  navLinks.forEach(link => {
+    if (link.textContent.trim() === "Login / Signup") {
+      loginLink = link;
+    }
+
+    if (link.textContent.trim() === "Logout") {
+      logoutLink = link;
+    }
+  });
+
+  if (loginLink) {
+    loginLink.style.display = isLoggedIn ? "none" : "inline-block";
+  }
+
+  if (logoutLink) {
+    logoutLink.style.display = isLoggedIn ? "inline-block" : "none";
+  }
+}
+
 renderCart();
 updateCartCount();
+toggleAuthLinks();
