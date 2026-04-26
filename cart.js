@@ -50,13 +50,6 @@ function renderCart() {
   total.innerText = sum.toLocaleString("en-IN");
 }
 
-// Remove item
-function removeItem(index) {
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
-  updateCartCount();
-}
 function increaseQty(index) {
   cart[index].quantity += 1;
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -91,6 +84,17 @@ function logout() {
   localStorage.removeItem("currentUser");
   localStorage.removeItem("cart");
   window.location.href = "login.html";
+}
+
+function proceedToCheckout(event) {
+  event.preventDefault();
+
+  if (!isLoggedIn) {
+    window.location.href = "login.html?redirect=checkout.html";
+    return;
+  }
+
+  window.location.href = "checkout.html";
 }
 
 function toggleAuthLinks() {
