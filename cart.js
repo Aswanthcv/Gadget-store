@@ -121,6 +121,30 @@ function toggleAuthLinks() {
   }
 }
 
+function initMobileNav() {
+  let nav = document.querySelector("nav");
+  let navToggle = document.querySelector(".nav-toggle");
+  let navLinks = document.querySelectorAll("nav ul li a");
+
+  if (!nav || !navToggle) {
+    return;
+  }
+
+  navToggle.addEventListener("click", () => {
+    nav.classList.toggle("nav-open");
+    let isExpanded = nav.classList.contains("nav-open");
+    navToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
 renderCart();
 updateCartCount();
 toggleAuthLinks();
+initMobileNav();

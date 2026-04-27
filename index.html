@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gadget Store</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -10,9 +11,14 @@
 
   <!-- Navbar -->
   <nav>
-    <a href="index.html" class="logo">
-      <img src="images/logo.png" alt="Gadget Hub Logo">
+    <a href="index.html" class="logo" aria-label="GadgetHub home">
+      <span class="logo-pill">
+        <span class="logo-gadget">Gadget</span><span class="logo-hub">HUB</span>
+      </span>
     </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <ul>
       <li><a href="index.html" class="active-link">Home</a></li>
       <li><a href="#product-list">Products</a></li>

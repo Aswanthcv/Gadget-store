@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Success</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -9,9 +10,14 @@
 <body>
 
   <nav>
-    <a href="index.html" class="logo">
-      <img src="images/logo.png" alt="Gadget Hub Logo">
+    <a href="index.html" class="logo" aria-label="GadgetHub home">
+      <span class="logo-pill">
+        <span class="logo-gadget">Gadget</span><span class="logo-hub">HUB</span>
+      </span>
     </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="index.html#product-list">Products</a></li>
@@ -99,6 +105,31 @@
       localStorage.removeItem("cart");
       window.location.href = "login.html";
     }
+
+    function initMobileNav() {
+      let nav = document.querySelector("nav");
+      let navToggle = document.querySelector(".nav-toggle");
+      let navLinks = document.querySelectorAll("nav ul li a");
+
+      if (!nav || !navToggle) {
+        return;
+      }
+
+      navToggle.addEventListener("click", () => {
+        nav.classList.toggle("nav-open");
+        let isExpanded = nav.classList.contains("nav-open");
+        navToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+      });
+
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          nav.classList.remove("nav-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    initMobileNav();
   </script>
 
 </body>
